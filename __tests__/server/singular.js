@@ -28,7 +28,7 @@ describe('Server', () => {
   describe('POST /:resource', () => {
     test('should create resource', () => {
       const user = { name: 'bar' }
-      return request(server).post('/user').send(user).expect(201, user)
+      return request(server).post('/user').send(user).expect(200, user)
     })
   })
 

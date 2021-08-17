@@ -45,7 +45,7 @@ describe('Fake server', () => {
         .expect('Access-Control-Expose-Headers', 'Location')
         .expect('Location', /posts\/3$/)
         .expect('Content-Type', /json/)
-        .expect(201, {
+        .expect(200, {
           id: 3,
           body: 'foo',
           booleanValue: true,

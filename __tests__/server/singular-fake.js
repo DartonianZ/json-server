@@ -24,7 +24,7 @@ describe('Fake server', () => {
   describe('POST /:resource', () => {
     test('should not create resource', async () => {
       const user = { name: 'bar' }
-      await request(server).post('/user').send(user).expect(201, user)
+      await request(server).post('/user').send(user).expect(200, user)
       assert.notDeepStrictEqual(db.user, user)
     })
   })

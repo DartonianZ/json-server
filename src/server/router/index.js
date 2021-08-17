@@ -49,6 +49,16 @@ module.exports = (db, opts) => {
     res.jsonp(db.getState())
   })
 
+  router.delete('/db', (req, res) => {
+    const params = req.query || {}
+
+    Object.keys(JSON.parse(JSON.stringify(db))).forEach((key) => {
+      db.set(key, params[key] === 'object' ? {} : []).write()
+    })
+    res.status(200)
+    res.jsonp(db.getState())
+  })
+
   // Handle /:parent/:parentId/:resource
   router.use(nested(opts))
 

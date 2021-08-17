@@ -23,7 +23,7 @@ module.exports = (db, name, opts) => {
     res.setHeader('Access-Control-Expose-Headers', 'Location')
     res.location(`${getFullURL(req)}`)
 
-    res.status(201)
+    res.status(200)
     next()
   }
 

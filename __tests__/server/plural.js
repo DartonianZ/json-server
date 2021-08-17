@@ -489,7 +489,7 @@ describe('Server', () => {
         .expect('Access-Control-Expose-Headers', 'Location')
         .expect('Location', /posts\/3$/)
         .expect('Content-Type', /json/)
-        .expect(201, {
+        .expect(200, {
           id: 3,
           body: 'foo',
           booleanValue: true,
@@ -505,7 +505,7 @@ describe('Server', () => {
         .send({ body: 'foo', booleanValue: true, integerValue: 1 })
         .expect('Content-Type', /json/)
         // x-www-form-urlencoded will convert to string
-        .expect(201, {
+        .expect(200, {
           id: 3,
           body: 'foo',
           booleanValue: 'true',
@@ -519,7 +519,7 @@ describe('Server', () => {
         .post('/refs')
         .send({ url: 'http://foo.com', postId: 1 })
         .expect('Content-Type', /json/)
-        .expect(201)
+        .expect(200)
       assert.strictEqual(db.refs.length, 2)
     })
   })
@@ -530,7 +530,7 @@ describe('Server', () => {
         .post('/posts/1/comments')
         .send({ body: 'foo' })
         .expect('Content-Type', /json/)
-        .expect(201, { id: 6, postId: '1', body: 'foo' }))
+        .expect(200, { id: 6, postId: '1', body: 'foo' }))
   })
 
   describe('POST /:resource?_delay=', () => {
@@ -539,7 +539,7 @@ describe('Server', () => {
       request(server)
         .post('/posts?_delay=1100')
         .send({ body: 'foo', booleanValue: true, integerValue: 1 })
-        .expect(201, function (err) {
+        .expect(200, function (err) {
           const end = new Date()
           done(end - start > 1000 ? err : new Error("Request wasn't delayed"))
         })
@@ -748,6 +748,6 @@ describe('Server', () => {
         .post('/posts')
         .send({ body: 'hello' })
         .expect('Content-Type', /json/)
-        .expect(201, { _id: 2, body: 'hello' }))
+        .expect(200, { _id: 2, body: 'hello' }))
   })
 })

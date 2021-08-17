@@ -97,7 +97,7 @@ describe('Server with custom foreign key', () => {
         .post('/posts/1/comments')
         .send({ body: 'foo' })
         .expect('Content-Type', /json/)
-        .expect(201, { id: 4, post_id: '1', body: 'foo' }))
+        .expect(200, { id: 4, post_id: '1', body: 'foo' }))
   })
 
   describe('DELETE /:resource/:id', () => {

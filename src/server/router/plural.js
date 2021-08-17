@@ -265,7 +265,7 @@ module.exports = (db, name, opts) => {
     res.setHeader('Access-Control-Expose-Headers', 'Location')
     res.location(`${getFullURL(req)}/${resource.id}`)
 
-    res.status(201)
+    res.status(200)
     res.locals.data = resource
 
     next()
